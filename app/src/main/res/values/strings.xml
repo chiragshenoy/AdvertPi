@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Under25</string>
+    <string name="rupee">\u20B9</string>
 </resources>
