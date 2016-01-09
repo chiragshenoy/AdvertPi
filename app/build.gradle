@@ -32,7 +32,17 @@ dependencies {
     compile 'com.github.carlonzo.stikkyheader:core:0.0.3-SNAPSHOT'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.github.AlbertGrobas:MovingImageView:381fddac64'
+
 }
 repositories {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven {
+        url "https://repository-achartengine.forge.cloudbees.com/snapshot/"
+    }
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+    maven {
+        url "https://jitpack.io"
+    }
+    mavenCentral()
 }

@@ -3,6 +3,7 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
+    <dimen name="app_bar_height">200dp</dimen>
 
     <dimen name="min_height_textheader_materiallike">65dp</dimen>
     <dimen name="min_height_header_materiallike">100dp</dimen>

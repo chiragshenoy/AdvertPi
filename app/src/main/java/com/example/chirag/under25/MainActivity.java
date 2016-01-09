@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
+import net.grobas.view.MovingImageView;
+
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
@@ -49,22 +51,25 @@ public class MainActivity extends AppCompatActivity {
     MyAdapter mAdapter;
     String imageURL = "";
     ImageView header_image;
+    MovingImageView movingImageView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        header_image = (ImageView) findViewById(R.id.header_image);
 
+        movingImageView = (MovingImageView) findViewById(R.id.miv);
 
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
 
         itemArrayList = new ArrayList<Item>();
-        tag = (TextView) findViewById(R.id.tag);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         mRecyclerView.setLayoutManager(layoutManager);
+        mRecyclerView.setMinimumHeight(800);
+
+
 
 
         String ssid = "Test";
@@ -91,16 +96,6 @@ public class MainActivity extends AppCompatActivity {
         mAdapter = new MyAdapter(getApplication(), itemArrayList);
         mRecyclerView.setAdapter(mAdapter);
 
-        FrameLayout f = (FrameLayout) findViewById(R.id.layout_container);
-
-        IO2014HeaderAnimator animator = new IO2014HeaderAnimator(getApplicationContext());
-
-        StikkyHeaderBuilder.stickTo(mRecyclerView)
-                .setHeader(R.id.header, f)
-                .animator(animator)
-                .minHeightHeader(250)
-                .build();
-
     }
 
     public class con extends AsyncTask<String, Void, String> {
@@ -112,9 +107,8 @@ public class MainActivity extends AppCompatActivity {
             Picasso.with(getApplicationContext())
                     .load(imageURL)
                     .resize(500, 150)
-                    .into(header_image);
+                    .into(movingImageView);
 
-            tag.setText(sTag);
         }
 
         @Override
