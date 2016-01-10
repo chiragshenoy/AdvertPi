@@ -37,24 +37,34 @@
                     android:id="@+id/item_header"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginTop="5dp"
                     android:text="Awesome Item Ever" />
 
                 <TextView
                     android:id="@+id/item_description"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/item_header"
+                    android:layout_marginLeft="4dp"
                     android:layout_marginTop="8dp"
-                    android:text="dasdasdasdasdasdasdasd"
+                    android:text="Description"
                     android:textColor="#333333" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@id/item_description"
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"></View>
 
                 <TextView
                     android:id="@+id/item_old_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_below="@id/item_description"
-                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
                     android:text="500"
                     android:textColor="#ee0000"
                     android:textSize="20sp" />
@@ -63,9 +73,10 @@
                     android:id="@+id/item_new_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
                     android:layout_below="@id/item_description"
-                    android:layout_marginTop="7dp"
+                    android:gravity="center_vertical"
                     android:text="500"
                     android:textColor="#00ff00"
                     android:textSize="24sp" />
