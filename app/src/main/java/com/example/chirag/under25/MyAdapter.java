@@ -104,7 +104,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder> {
         // If the bound view wasn't previously displayed on screen, it's animated
         if (position > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(context, android.R.anim.slide_in_left);
-            animation.setStartOffset(position * 120);
+            animation.setStartOffset(position * 80);
             viewToAnimate.startAnimation(animation);
             lastPosition = position;
         }

@@ -13,6 +13,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:layout_marginBottom="4dp"
+        android:elevation="4dp"
         card_view:cardCornerRadius="4dp">
 
         <LinearLayout
@@ -52,8 +53,8 @@
                     android:id="@+id/item_old_price"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginTop="10dp"
+                    android:layout_below="@id/item_description"
+                    android:layout_marginTop="8dp"
                     android:text="500"
                     android:textColor="#ee0000"
                     android:textSize="20sp" />
@@ -63,10 +64,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
-                    android:layout_below="@+id/item_old_price"
+                    android:layout_below="@id/item_description"
+                    android:layout_marginTop="7dp"
                     android:text="500"
                     android:textColor="#00ff00"
-                    android:textSize="28sp" />
+                    android:textSize="24sp" />
 
                 <View
                     android:layout_width="match_parent"

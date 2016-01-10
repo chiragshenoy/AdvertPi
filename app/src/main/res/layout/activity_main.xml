@@ -1,8 +1,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:lib="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="@dimen/activity_vertical_margin">
+    android:layout_height="match_parent">
 
     <net.grobas.view.MovingImageView
         android:id="@+id/miv"
@@ -17,11 +17,31 @@
         app:miv_speed="20"
         app:miv_start_delay="0" />
 
+    <com.github.glomadrian.loadingballs.BallView
+        android:id="@+id/loader"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_margin="30dp"
+        lib:ball_colors="@array/colors"
+        lib:balls="3"
+        lib:enable_size_animation="true"
+        lib:max_ball_size="12dp"
+        lib:min_ball_size="5dp"
+        lib:movement_cycle_time="1000"
+        lib:path="triangle"
+        lib:size_cycle_time="500">
+
+    </com.github.glomadrian.loadingballs.BallView>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/my_recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/miv">
+        android:layout_below="@+id/miv"
+        android:layout_marginTop="8dp"
+        android:padding="10dp">
 
     </android.support.v7.widget.RecyclerView>
 

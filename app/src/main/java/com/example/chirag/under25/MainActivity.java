@@ -1,5 +1,7 @@
 package com.example.chirag.under25;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.net.wifi.WifiConfiguration;
 import android.net.wifi.WifiManager;
 import android.os.AsyncTask;
@@ -9,11 +11,13 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.github.glomadrian.loadingballs.BallView;
 import com.squareup.picasso.Picasso;
 
 import net.grobas.view.MovingImageView;
@@ -52,12 +56,16 @@ public class MainActivity extends AppCompatActivity {
     String imageURL = "";
     ImageView header_image;
     MovingImageView movingImageView;
+    BallView ballView;
+    private int mShortAnimationDuration;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ballView = (BallView) findViewById(R.id.loader);
 
         movingImageView = (MovingImageView) findViewById(R.id.miv);
 
@@ -69,8 +77,8 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(layoutManager);
         mRecyclerView.setMinimumHeight(800);
 
-
-
+        mShortAnimationDuration = getResources().getInteger(
+                android.R.integer.config_longAnimTime);
 
         String ssid = "Test";
         String key = "0000000000";
@@ -90,6 +98,10 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 new con().execute();
+//                ballView.setVisibility(View.GONE);
+//
+                crossfade();
+
             }
         }, 3000);
 
@@ -97,6 +109,34 @@ public class MainActivity extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
 
     }
+
+    private void crossfade() {
+
+        mRecyclerView.setAlpha(0f);
+        mRecyclerView.setVisibility(View.VISIBLE);
+
+        // Animate the content view to 100% opacity, and clear any animation
+        // listener set on the view.
+        mRecyclerView.animate()
+                .alpha(1f)
+                .setDuration(mShortAnimationDuration)
+                .setListener(null);
+
+        // Animate the loading view to 0% opacity. After the animation ends,
+        // set its visibility to GONE as an optimization step (it won't
+        // participate in layout passes, etc.)
+        ballView.animate()
+                .alpha(0f)
+                .setDuration(mShortAnimationDuration)
+                .setListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        ballView.setVisibility(View.GONE);
+                    }
+                });
+
+    }
+
 
     public class con extends AsyncTask<String, Void, String> {
 

@@ -7,7 +7,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.chirag.under25"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
         versionName "1.0"
@@ -33,7 +33,7 @@ dependencies {
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.github.AlbertGrobas:MovingImageView:381fddac64'
-
+    compile 'com.github.glomadrian:loadingballs:1.1@aar'
 }
 repositories {
     maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
@@ -45,4 +45,7 @@ repositories {
         url "https://jitpack.io"
     }
     mavenCentral()
+    maven {
+        url "http://dl.bintray.com/glomadrian/maven"
+    }
 }
